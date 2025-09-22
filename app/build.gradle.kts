@@ -39,6 +39,17 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    productFlavors {
+        defaultConfig {
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                project.property("BASE_URL").toString()
+            )
+        }
     }
 }
 
