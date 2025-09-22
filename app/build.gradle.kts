@@ -73,4 +73,8 @@ dependencies {
     //navigation
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 }
