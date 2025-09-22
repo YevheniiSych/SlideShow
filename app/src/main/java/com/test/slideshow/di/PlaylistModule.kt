@@ -1,7 +1,12 @@
 package com.test.slideshow.di
 
 import com.test.slideshow.data.playlist.api.PlaylistApi
+import com.test.slideshow.data.playlist.datasource.PlayListRemoteDataSource
+import com.test.slideshow.data.playlist.datasource.PlaylistLocalDataSource
+import com.test.slideshow.data.playlist.datasource.PlaylistLocalDataSourceImpl
+import com.test.slideshow.data.playlist.datasource.PlaylistRemoteDataSourceImpl
 import com.test.slideshow.data.playlist.db.AppDB
+import com.test.slideshow.data.playlist.db.PlaylistDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +20,9 @@ object PlaylistModule {
 
     @Provides
     @Singleton
-    fun providePlaylistDao(db: AppDB) = db.playlistDao()
+    fun providePlaylistDao(db: AppDB): PlaylistDao {
+        return db.playlistDao()
+    }
 
     @Provides
     @Singleton
@@ -24,4 +31,15 @@ object PlaylistModule {
             .create(PlaylistApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun providePlaylistsLocalDataSource(dao: PlaylistDao): PlaylistLocalDataSource {
+        return PlaylistLocalDataSourceImpl(dao)
+    }
+
+    @Provides
+    @Singleton
+    fun providePlaylistsRemoteDataSource(api: PlaylistApi): PlayListRemoteDataSource {
+        return PlaylistRemoteDataSourceImpl(api)
+    }
 }
