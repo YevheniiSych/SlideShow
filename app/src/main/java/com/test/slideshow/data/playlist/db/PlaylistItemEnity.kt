@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "playlist_items")
 data class PlaylistItemEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+
+    @PrimaryKey
+    @ColumnInfo(name = "creativeKey")
+    val creativeKey: String,
 
     @ColumnInfo(name = "creativeRefKey")
     val creativeRefKey: String?,
@@ -29,9 +31,6 @@ data class PlaylistItemEntity(
 
     @ColumnInfo(name = "slidePriority")
     val slidePriority: Int,
-
-    @ColumnInfo(name = "creativeKey")
-    val creativeKey: String,
 
     @ColumnInfo(name = "playlistKey")
     val playlistKey: String,
