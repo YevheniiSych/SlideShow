@@ -3,7 +3,7 @@ package com.test.slideshow.di
 import android.content.Context
 import androidx.room.Room
 import com.test.slideshow.BuildConfig
-import com.test.slideshow.data.playlist.db.AppDB
+import com.test.slideshow.data.common.db.AppDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

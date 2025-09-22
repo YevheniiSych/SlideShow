@@ -1,5 +1,4 @@
-package com.test.slideshow.data.playlist.model
-
+package com.test.slideshow.data.playlist.api
 
 import com.google.gson.annotations.SerializedName
 

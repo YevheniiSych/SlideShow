@@ -1,22 +1,36 @@
 package com.test.slideshow.data.playlist.mapper
 
+import com.test.slideshow.data.playlist.api.PlaylistsResponse
 import com.test.slideshow.data.playlist.db.PlaylistItemEntity
-import com.test.slideshow.data.playlist.model.PlaylistsResponse
+import com.test.slideshow.data.playlist.model.PlaylistItem
 
-fun PlaylistsResponse.PlaylistDto.toPlayListItemsEntity(): List<PlaylistItemEntity> {
-    return this.playlistItems.map {
-        PlaylistItemEntity(
-            creativeRefKey = it.creativeRefKey,
-            duration = it.duration,
-            expireDate = it.expireDate,
-            startDate = it.startDate,
-            collectStatistics = it.collectStatistics,
-            creativeLabel = it.creativeLabel,
-            slidePriority = it.slidePriority,
-            creativeKey = it.creativeKey,
-            playlistKey = it.playlistKey,
-            orderKey = it.orderKey,
-            eventTypesList = it.eventTypesList
-        )
-    }
+fun PlaylistsResponse.PlaylistDto.PlaylistItemDto.toPlaylistItemEntity(): PlaylistItemEntity {
+    return PlaylistItemEntity(
+        creativeRefKey = creativeRefKey,
+        duration = duration,
+        expireDate = expireDate,
+        startDate = startDate,
+        collectStatistics = collectStatistics,
+        creativeLabel = creativeLabel,
+        slidePriority = slidePriority,
+        creativeKey = creativeKey,
+        playlistKey = playlistKey,
+        orderKey = orderKey,
+        eventTypesList = eventTypesList
+    )
+}
+
+
+fun PlaylistItemEntity.toPlaylistItem(): PlaylistItem {
+    return PlaylistItem(
+        creativeRefKey = creativeRefKey,
+        duration = duration,
+        expireDate = expireDate,
+        startDate = startDate,
+        creativeLabel = creativeLabel,
+        slidePriority = slidePriority,
+        creativeKey = creativeKey,
+        playlistKey = playlistKey,
+        orderKey = orderKey
+    )
 }
