@@ -1,4 +1,4 @@
-package com.test.slideshow.data.db
+package com.test.slideshow.data.playlist.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
