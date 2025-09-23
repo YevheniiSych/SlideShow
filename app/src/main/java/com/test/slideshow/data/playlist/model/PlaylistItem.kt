@@ -1,5 +1,7 @@
 package com.test.slideshow.data.playlist.model
 
+import com.test.slideshow.BuildConfig
+
 data class PlaylistItem(
     val creativeRefKey: String?,
     val duration: Int,
@@ -10,4 +12,21 @@ data class PlaylistItem(
     val creativeKey: String,
     val playlistKey: String,
     val orderKey: Int,
-)
+) {
+    val mediaResourceUrl get() = "${BuildConfig.BASE_URL}/PlayerBackend/creative/get/$creativeKey"
+
+    val mediaType
+        get() = when {
+            creativeKey.endsWith(".mp4", ignoreCase = true) -> MediaType.Video
+
+            creativeKey.endsWith(".jpg", ignoreCase = true)
+                    || creativeKey.endsWith(".jpeg", ignoreCase = true)
+                    || creativeKey.endsWith(".png", ignoreCase = true) -> MediaType.Image
+
+            else -> MediaType.Image
+        }
+}
+
+enum class MediaType {
+    Image, Video
+}

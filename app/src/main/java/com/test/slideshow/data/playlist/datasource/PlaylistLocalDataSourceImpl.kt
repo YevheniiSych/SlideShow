@@ -10,7 +10,7 @@ class PlaylistLocalDataSourceImpl @Inject constructor(
 ) : PlaylistLocalDataSource {
 
     override fun getPlaylistItems(playlistKey: String): Flow<List<PlaylistItemEntity>> {
-        return playlistDao.getItemsByPlaylist(playlistKey)
+        return playlistDao.getAllItems()
     }
 
     override suspend fun savePlaylist(items: List<PlaylistItemEntity>) {
