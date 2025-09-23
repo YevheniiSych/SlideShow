@@ -97,4 +97,9 @@ dependencies {
     //glide
     implementation(libs.glide)
     ksp(libs.glide.compiler)
+
+    //Tests
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.coroutines.test)
 }
