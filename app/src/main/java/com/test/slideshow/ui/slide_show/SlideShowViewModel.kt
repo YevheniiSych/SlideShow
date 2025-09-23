@@ -37,12 +37,11 @@ class SlideShowViewModel @Inject constructor(
         }
 
         slideShowJob = viewModelScope.launch {
-            val mediaItems = state.value.playlistItems
-            if (mediaItems.isEmpty()) {
-                return@launch
-            }
             var index = state.value.slideIndex
             while (isActive) {
+                // Pretty easy implementation if playlist was updated while slideshow is running
+                // it will always show fresh media as index is in the same place
+                val mediaItems = state.value.playlistItems
                 val item = mediaItems[index]
 
                 _state.update { it.copy(slideIndex = index) }

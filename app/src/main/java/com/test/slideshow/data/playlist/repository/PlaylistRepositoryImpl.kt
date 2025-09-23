@@ -32,7 +32,7 @@ class PlaylistRepositoryImpl @Inject constructor(
                             playlistDto.toPlaylistItemEntity()
                         }
                     }
-                // Save just received playlist items to DB
+                // Save just received playlist items to DB to show items immediately
                 localDataSource.savePlaylist(playlistsEntity)
 
                 // Download files and update localUri in DB
