@@ -94,10 +94,6 @@ dependencies {
     implementation(libs.media3.ui)
     implementation(libs.media3.common)
 
-    //glide
-    implementation(libs.glide)
-    ksp(libs.glide.compiler)
-
     //Tests
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)

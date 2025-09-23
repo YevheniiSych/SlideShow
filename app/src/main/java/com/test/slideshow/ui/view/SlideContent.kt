@@ -16,7 +16,6 @@ import com.test.slideshow.data.playlist.model.PlaylistItem
 fun SlideContent(
     item: PlaylistItem,
     alpha: Float,
-    duration: Int,
     modifier: Modifier = Modifier
 ) {
 
@@ -36,11 +35,10 @@ fun SlideContent(
                     contentScale = ContentScale.Fit
                 )
             }
-            MediaType.Video -> FadingVideoPlayer(
+            MediaType.Video -> VideoPlayer(
                 url = item.mediaResourceLink,
                 modifier = Modifier.fillMaxSize(),
-                autoPlay = true,
-                crossfadeMs = duration
+                autoPlay = true
             )
         }
     }

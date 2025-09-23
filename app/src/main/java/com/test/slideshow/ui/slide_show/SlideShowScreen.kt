@@ -13,10 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.test.slideshow.data.playlist.model.MediaType
 import com.test.slideshow.ui.slide_show.model.SlideShowUiState
-import com.test.slideshow.ui.view.FadingVideoPlayer
-import com.test.slideshow.ui.view.GlideCrossfadeImage
 import com.test.slideshow.ui.view.SlideShowPlayer
 
 @Composable

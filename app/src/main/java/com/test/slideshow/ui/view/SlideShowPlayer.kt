@@ -45,8 +45,7 @@ fun SlideShowPlayer(
         previousItem?.let { item ->
             SlideContent(
                 item = item,
-                alpha = previousAlpha.value,
-                duration = crossfadeMs,
+                alpha = previousAlpha.value
             )
         }
 
@@ -54,8 +53,7 @@ fun SlideShowPlayer(
         currentItem?.let { item ->
             SlideContent(
                 item = item,
-                alpha = currentAlpha.value,
-                duration = crossfadeMs
+                alpha = currentAlpha.value
             )
         }
     }
