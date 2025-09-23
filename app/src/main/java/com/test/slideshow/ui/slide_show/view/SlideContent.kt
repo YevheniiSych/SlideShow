@@ -1,4 +1,4 @@
-package com.test.slideshow.ui.view
+package com.test.slideshow.ui.slide_show.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +23,7 @@ fun SlideContent(
 
     Box(modifier = modifier.graphicsLayer { this.alpha = alpha }) {
         when (item.mediaType) {
-            MediaType.Image ->{
+            MediaType.Image -> {
                 AsyncImage(
                     model = ImageRequest.Builder(context)
                         .data(item.mediaResourceLink)
@@ -35,6 +35,7 @@ fun SlideContent(
                     contentScale = ContentScale.Fit
                 )
             }
+
             MediaType.Video -> VideoPlayer(
                 url = item.mediaResourceLink,
                 modifier = Modifier.fillMaxSize(),

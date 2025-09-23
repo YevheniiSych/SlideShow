@@ -1,4 +1,4 @@
-package com.test.slideshow.ui.view
+package com.test.slideshow.ui.slide_show.view
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween

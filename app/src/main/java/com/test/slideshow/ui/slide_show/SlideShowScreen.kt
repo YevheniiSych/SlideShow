@@ -14,7 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.test.slideshow.ui.slide_show.model.SlideShowUiState
-import com.test.slideshow.ui.view.SlideShowPlayer
+import com.test.slideshow.ui.slide_show.view.SlideShowPlayer
 
 @Composable
 fun SlideShowScreen(
