@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface PlaylistLocalDataSource {
     fun getPlaylistItems(playlistKey: String): Flow<List<PlaylistItemEntity>>
     suspend fun savePlaylist(items: List<PlaylistItemEntity>)
+    suspend fun updatePlaylistItem(item: PlaylistItemEntity)
 }

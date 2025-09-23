@@ -1,41 +1,22 @@
 package com.test.slideshow.ui.view
 
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.ui.PlayerView
-
-//@Composable
-//fun Media3AndroidView(player: ExoPlayer?) {
-//    AndroidView(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .fillMaxHeight(0.5f),
-//        factory = { context ->
-//            PlayerView(context).apply {
-//                this.player = player
-//            }
-//        },
-//        update = { playerView ->
-//            playerView.player = player
-//        }
-//    )
-//}
-
-
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.PlayerView
 import kotlinx.coroutines.launch
 
 @Composable

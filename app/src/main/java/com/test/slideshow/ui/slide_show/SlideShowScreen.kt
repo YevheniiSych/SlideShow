@@ -24,7 +24,7 @@ fun SlideShowScreen(
             when (currentItem.mediaType) {
                 MediaType.Image -> {
                     GlideCrossfadeImage(
-                        url = currentItem.mediaResourceUrl,
+                        url = currentItem.mediaResourceLink,
                         modifier = Modifier
                             .fillMaxSize(),
                         durationMs = 1500
@@ -33,7 +33,7 @@ fun SlideShowScreen(
 
                 MediaType.Video -> {
                     FadingVideoPlayer(
-                        url = currentItem.mediaResourceUrl,
+                        url = currentItem.mediaResourceLink,
                         modifier = Modifier
                             .fillMaxSize(),
                         autoPlay = true,

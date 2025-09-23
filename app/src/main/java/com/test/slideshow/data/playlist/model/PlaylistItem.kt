@@ -12,8 +12,17 @@ data class PlaylistItem(
     val creativeKey: String,
     val playlistKey: String,
     val orderKey: Int,
+    val localUri: String?
 ) {
-    val mediaResourceUrl get() = "${BuildConfig.BASE_URL}/PlayerBackend/creative/get/$creativeKey"
+    private val mediaResourceUrl get() = "${BuildConfig.BASE_URL}/PlayerBackend/creative/get/$creativeKey"
+
+    val mediaResourceLink: String get() {
+        return if (localUri.isNullOrEmpty()) {
+            mediaResourceUrl
+        } else {
+            localUri
+        }
+    }
 
     val mediaType
         get() = when {

@@ -16,7 +16,8 @@ fun PlaylistsResponse.PlaylistDto.PlaylistItemDto.toPlaylistItemEntity(): Playli
         creativeKey = creativeKey,
         playlistKey = playlistKey,
         orderKey = orderKey,
-        eventTypesList = eventTypesList
+        eventTypesList = eventTypesList,
+        localUri = null
     )
 }
 
@@ -31,6 +32,7 @@ fun PlaylistItemEntity.toPlaylistItem(): PlaylistItem {
         slidePriority = slidePriority,
         creativeKey = creativeKey,
         playlistKey = playlistKey,
-        orderKey = orderKey
+        orderKey = orderKey,
+        localUri = localUri
     )
 }

@@ -3,6 +3,7 @@ package com.test.slideshow.di
 import android.content.Context
 import androidx.room.Room
 import com.test.slideshow.BuildConfig
+import com.test.slideshow.data.common.FileDownloader
 import com.test.slideshow.data.common.db.AppDB
 import dagger.Module
 import dagger.Provides
@@ -36,5 +37,11 @@ object AppModule {
             klass = AppDB::class.java,
             name = "app_db"
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFileDownloader(@ApplicationContext context: Context): FileDownloader {
+        return FileDownloader(context)
     }
 }

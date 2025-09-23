@@ -20,4 +20,12 @@ class PlaylistLocalDataSourceImpl @Inject constructor(
             e.printStackTrace()
         }
     }
+
+    override suspend fun updatePlaylistItem(item: PlaylistItemEntity) {
+        try {
+            playlistDao.updateItem(item)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

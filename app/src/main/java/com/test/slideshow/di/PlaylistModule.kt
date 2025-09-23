@@ -1,5 +1,6 @@
 package com.test.slideshow.di
 
+import com.test.slideshow.data.common.FileDownloader
 import com.test.slideshow.data.common.db.AppDB
 import com.test.slideshow.data.playlist.api.PlaylistApi
 import com.test.slideshow.data.playlist.datasource.PlayListRemoteDataSource
@@ -50,11 +51,13 @@ object PlaylistModule {
     @Singleton
     fun providePlaylistRepository(
         remoteDataSource: PlayListRemoteDataSource,
-        localDataSource: PlaylistLocalDataSource
+        localDataSource: PlaylistLocalDataSource,
+        fileDownloader: FileDownloader
     ): PlaylistRepository {
         return PlaylistRepositoryImpl(
             remoteDataSource = remoteDataSource,
-            localDataSource = localDataSource
+            localDataSource = localDataSource,
+            fileDownloader = fileDownloader
         )
     }
 

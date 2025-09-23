@@ -39,5 +39,8 @@ data class PlaylistItemEntity(
     val orderKey: Int,
 
     @ColumnInfo(name = "eventTypesList")
-    val eventTypesList: List<String>
+    val eventTypesList: List<String>,
+
+    @ColumnInfo(name = "localUri")
+    val localUri: String?,
 )

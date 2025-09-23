@@ -1,5 +1,7 @@
 package com.test.slideshow.data.playlist.repository
 
+import com.test.slideshow.BuildConfig
+import com.test.slideshow.data.common.FileDownloader
 import com.test.slideshow.data.playlist.datasource.PlayListRemoteDataSource
 import com.test.slideshow.data.playlist.datasource.PlaylistLocalDataSource
 import com.test.slideshow.data.playlist.mapper.toPlaylistItem
@@ -11,7 +13,8 @@ import javax.inject.Inject
 
 class PlaylistRepositoryImpl @Inject constructor(
     private val remoteDataSource: PlayListRemoteDataSource,
-    private val localDataSource: PlaylistLocalDataSource
+    private val localDataSource: PlaylistLocalDataSource,
+    private val fileDownloader: FileDownloader
 ) : PlaylistRepository {
 
 
@@ -29,7 +32,16 @@ class PlaylistRepositoryImpl @Inject constructor(
                             playlistDto.toPlaylistItemEntity()
                         }
                     }
+                // Save just received playlist items to DB
                 localDataSource.savePlaylist(playlistsEntity)
+
+                // Download files and update localUri in DB
+                playlistsEntity.onEach {
+                    val url = "${BuildConfig.BASE_URL}/PlayerBackend/creative/get/${it.creativeKey}"
+                    val file = fileDownloader.downloadFile(url, it.creativeKey)
+                    val updated = it.copy(localUri = file.toURI().toString())
+                    localDataSource.updatePlaylistItem(updated)
+                }
             }
             .onFailure {
 
