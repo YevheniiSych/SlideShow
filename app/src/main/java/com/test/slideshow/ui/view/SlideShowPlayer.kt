@@ -32,6 +32,9 @@ fun SlideShowPlayer(
         previousItem = currentItem
         currentItem = item
 
+        previousAlpha.snapTo(1f)
+        currentAlpha.snapTo(0f)
+
         scope.launch { previousAlpha.animateTo(0f, tween(crossfadeMs)) }
         scope.launch { currentAlpha.animateTo(1f, tween(crossfadeMs)) }
     }

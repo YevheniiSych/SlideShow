@@ -102,4 +102,8 @@ dependencies {
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.coroutines.test)
+
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil)
 }
