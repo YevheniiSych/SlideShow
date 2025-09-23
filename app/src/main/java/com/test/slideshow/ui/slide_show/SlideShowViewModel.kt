@@ -47,8 +47,12 @@ class SlideShowViewModel @Inject constructor(
 
                 _state.update { it.copy(slideIndex = index) }
 
-                val durationInMillis = item.duration * 1000L
-                delay(durationInMillis)
+                startCountdown(
+                    duration = item.duration,
+                    onTick = { countdown ->
+                        _state.update { it.copy(slideCountdown = countdown) }
+                    }
+                )
 
                 if (mediaItems.size - 1 == index) {
                     index = 0
@@ -85,6 +89,19 @@ class SlideShowViewModel @Inject constructor(
                 playlistUseCase.refreshPlaylist("e490b14d-987d-414f-a822-1e7703b37ce4")
                 delay(10000)
             }
+        }
+    }
+
+    suspend fun startCountdown(
+        duration: Int,
+        intervalMs: Long = 1000,
+        onTick: (Int) -> Unit,
+    ) {
+        var counter = duration
+        while (counter != 0) {
+            delay(intervalMs)
+            counter--
+            onTick(counter)
         }
     }
 }
